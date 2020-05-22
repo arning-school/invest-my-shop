@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Dashboard</title>
+    <style>
+    body {
+  background-color: #efefef;
+}
+
+.profile-pic {
+    max-width: auto;
+    max-height: auto;
+}
+
+.file-upload {
+    display: none;
+}
+img {
+    width: 100%;
+    height: auto;
+}
+.p-image {
+    top: 167px;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0px 10px 0px;
+    text-align: left;
+    border: transparent;
+    background: transparent;
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+    }
+.p-image:hover {
+  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}
+.upload-button {
+  font-size: 1.2em;
+}
+
+.upload-button:hover {
+  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+  color: #999;
+}
+    
+        .row
+        {
+            width: 15%;
+            height: 100vh;
+        }
+        .circle {
+        border-radius: 50%;
+        border-width: 1px;
+        border-color: silver;
+        border-style: solid;
+        overflow: hidden;
+        width: 128px;
+        height: 128px;
+        top: 72px;
+        }
+        .button
+        {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0px 0px 0px;
+            text-align: left;
+            border: transparent;
+            background: transparent;
+            font-size: 15px;
+            
+        }
+        button:hover
+        {
+            color:silver;
+        }
+
+    </style>
+</head>
+<body>
+    <form action="connectS.php" method="POST">
+        <div class="row">
+        <div class="small-12 medium-2 large-2 columns">
+          <div class="circle">
+            <!-- User Profile Image -->
+            <img  name="image" class="profile-pic" src="" >
+            <!-- Default Image -->
+            
+            <!-- <i class="fa fa-user fa-5x"></i> -->
+          </div>
+          <div class="button">
+            
+          </div>
+       </div>
+       <div>
+        <button class="button upload-button"type="button"><i class="fa fa-camera upload-button"></i> Update profile</button>
+        <input class="file-upload" type="file" accept="image/*"/>
+            <button class="button"type="button"onclick="commingSoon()"><i class="fa fa-cog"></i> Settings</button>
+            <button class="button" type="submit"><i class="fa fa-sign-out"></i> <a style="text-decoration: none; color:black ;" href="signup.html">LogOut</a> </button>
+            
+       </div>
+     </div>
+     </form>
+     <script>
+
+        $(document).ready(function() {    
+        var readURL = function(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('.profile-pic').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+        }
+
+
+        $(".file-upload").on('change', function(){
+        readURL(this);
+        });
+
+        $(".upload-button").on('click', function() {
+        $(".file-upload").click();
+        });
+        });
+     </script>
+</body>
+</html>
